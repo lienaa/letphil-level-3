@@ -1,14 +1,19 @@
-import './App.css';
-import { User } from "./components/User";
+import "./App.css";
+import { Nav } from "./components/Nav/Nav";
 
 function App() {
-  const name = "Alex";
-
   return (
     <>
-      <User name={name} />
+      <Nav>
+        <div>Manga & Anime</div>
+        <a href="#">Naruto</a>
+        <a href="#">Bleach</a>
+        <a href="#">Jujutsu Kaisen</a>
+        <a href="#">One-Punch Man</a>
+        <a href="#">Read Free Manga!</a>
+      </Nav>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
