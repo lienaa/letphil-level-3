@@ -6,9 +6,7 @@ function App() {
 
   return (
     <>
-      <User>
-        <div>{name}</div>
-      </User>
+      <User name={name} />
     </>
   )
 }

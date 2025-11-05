@@ -1,5 +1,5 @@
 export const User = ({ name }) => {
     return (
-        <div></div>
+        <div>{name}</div>
     )
 }
