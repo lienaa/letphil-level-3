@@ -106,7 +106,6 @@ function App() {
       title: "VIZ Originals",
     },
   ];
-
   const listData1 = [
     [
       { link: "#", text: "About VIZ" },
@@ -126,7 +125,6 @@ function App() {
       { link: "#", text: "YouTube" },
     ],
   ];
-
   const copyright = [
     { link: "#", text: "Terms of Use" },
     { link: "#", text: "Privacy Policy" },
@@ -134,7 +132,6 @@ function App() {
     { link: "#", text: "Do Not Sell Or Share My Information" },
     { link: "#", text: "Accessibility" },
   ];
-
   const slideshow = [
     {
       src: "https://de7i3bh7bgh0d.cloudfront.net/2025/10/31/17/59/32/f85fbe87-c86b-463d-9519-016512b81d6e/NARSHP_cookbook_Blog_1200x630.jpg",
