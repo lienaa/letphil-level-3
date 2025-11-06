@@ -1,0 +1,19 @@
+.promo {
+    display:flex;
+    padding: 25px;
+    background-color: black;
+}
+
+.promo img {
+    width: 250px;
+}
+
+.promo p {
+    font-size: 30px;
+    text-align: left;
+    padding: 20px;
+}
+
+.promo a {
+    color: gray;
+}

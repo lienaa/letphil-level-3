@@ -7,3 +7,11 @@ export const Nav = ({ children }) => {
     </nav>
   );
 };
+
+export const SubNav = ({ children }) => {
+  return (
+    <div className="subnav">
+      {children}
+    </div>
+  );
+};

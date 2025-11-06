@@ -3,9 +3,16 @@
     color: white;
     padding: 10px;
     display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
 .navbar-styles a {
     color: white;
+}
+
+.subnav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
