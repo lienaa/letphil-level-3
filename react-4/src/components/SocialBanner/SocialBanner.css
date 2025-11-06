@@ -1,0 +1,17 @@
+.social-banner {
+    background-color:gray;
+    color:black;
+    padding: 15px;
+}
+
+.social-banner a {
+    color:red;
+}
+
+.social-banner h1 {
+    font-size: xx-large;
+}
+
+.social-banner p {
+    font-size: x-large;
+}

@@ -6,6 +6,9 @@ import { Search } from "./components/Search/Search";
 import { Card } from "./components/Card/Card";
 import { Promo } from "./components/Promo/Promo";
 import { FeatureGrid } from "./components/FeatureGrid/FeatureGrid";
+import { SocialBanner } from "./components/SocialBanner/SocialBanner";
+import { Newsletter } from "./components/Newsletter/Newsletter";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const gridData1 = [
@@ -41,6 +44,34 @@ function App() {
       title: "Dandadan",
       latest: "Chapter 216, Nov 3",
     },
+  ];
+
+  const listData1 = [
+    [
+      { link: "#", text: "About VIZ" },
+      { link: "#", text: "Contact VIZ" },
+      { link: "#", text: "FAQ" },
+      { link: "#", text: "Redeem Gift" },
+    ],
+    [
+      { link: "#", text: "Ratings" },
+      { link: "#", text: "Copyrights" },
+      { link: "#", text: "Jobs" },
+    ],
+    [
+      { link: "#", text: "X (formerly Twitter)" },
+      { link: "#", text: "Instagram" },
+      { link: "#", text: "TikTok" },
+      { link: "#", text: "YouTube" },
+    ],
+  ];
+
+  const copyright = [
+    { link: "#", text: "Terms of Use" },
+    { link: "#", text: "Privacy Policy" },
+    { link: "#", text: "California Privacy Notice" },
+    { link: "#", text: "Do Not Sell Or Share My Information" },
+    { link: "#", text: "Accessibility" },
   ];
 
   return (
@@ -94,7 +125,7 @@ function App() {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifytext: "space-between",
             gap: "10px",
           }}
         >
@@ -148,8 +179,28 @@ function App() {
         </Promo>
         <h1>Read free Shonen jump manga chapters!</h1>
         <FeatureGrid gridData={gridData1} />
+        <SocialBanner>
+          <h1>
+            Follow us on <a href="#">TikTok</a>, <a href="#">Facebook</a>,{" "}
+            <a href="#">Instagram</a>, or <a href="#">X (formerly Twitter)</a>.
+          </h1>
+          <p>Tag posts #viz to share</p>
+        </SocialBanner>
       </main>
-      <footer></footer>
+      <footer>
+        <Newsletter
+          image={{
+            src: "https://dw9to29mmj727.cloudfront.net/misc/newsletter-naruto3.png",
+            alt: "Naruto",
+          }}
+        >
+          Get the latest manga & anime news!
+          <span style={{ display: "block" }}>
+            You'll never miss a beat when you subscribe to our newsletter.
+          </span>
+        </Newsletter>
+        <Footer lists={listData1} copyright={copyright} />
+      </footer>
     </>
   );
 }

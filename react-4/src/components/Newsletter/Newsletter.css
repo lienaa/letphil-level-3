@@ -1,0 +1,23 @@
+.newsletter {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0px 0px 0px;
+    text-align: left;
+    background-color:gray;
+    padding: 20px 20px 0px 20px;
+}
+
+.newsletter img {
+    width: 190px;
+}
+
+.newsletter div {
+    font-size: xx-large;
+    max-width: 700px;
+}
+
+.newsletter span {
+    font-size: x-large;
+    max-width: 700px;
+}
