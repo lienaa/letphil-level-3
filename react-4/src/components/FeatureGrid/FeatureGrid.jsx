@@ -5,8 +5,9 @@ export const FeatureGrid = ({ gridData }) => {
   return (
     <>
       <div className="feature-grid">
-        {gridData.map((item) => (
+        {gridData.map((item, index) => (
           <GridItem
+            key={index}
             image={item.image}
             title={item.title}
             latest={item.latest}

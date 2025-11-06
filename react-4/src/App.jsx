@@ -2,6 +2,7 @@ import "./App.css";
 import { Nav } from "./components/Nav/Nav";
 import { SubNav } from "./components/Nav/Nav";
 import { Image } from "./components/Image/Image";
+import { SlideShow } from "./components/SlideShow/SlideShow";
 import { Search } from "./components/Search/Search";
 import { Card } from "./components/Card/Card";
 import { Promo } from "./components/Promo/Promo";
@@ -189,6 +190,7 @@ function App() {
             </SubNav>
           </Nav>
         </Nav>
+        <SlideShow slideshow={slideshow} />
         <Image
           width={1000}
           alt="Ninja Ramen"
