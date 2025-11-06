@@ -18,7 +18,7 @@ function App() {
         alt: "Dogsred",
       },
       title: "Dogsred",
-      latest: "Chapter 58, Nov 5",
+      latest: "Latest Chapter 58, Nov 5",
     },
     {
       image: {
@@ -26,7 +26,7 @@ function App() {
         alt: "Chainsaw Man",
       },
       title: "Chainsaw Man",
-      latest: "Chapter 219, Nov 4",
+      latest: "Latest Chapter 219, Nov 4",
     },
     {
       image: {
@@ -34,7 +34,7 @@ function App() {
         alt: "Blue Exorcist",
       },
       title: "Blue Exorcist",
-      latest: "Chapter 163, Nov 3",
+      latest: "Latest Chapter 163, Nov 3",
     },
     {
       image: {
@@ -42,7 +42,67 @@ function App() {
         alt: "Dandadan",
       },
       title: "Dandadan",
-      latest: "Chapter 216, Nov 3",
+      latest: "Latest Chapter 216, Nov 3",
+    },
+  ];
+  const gridData2 = [
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg",
+        alt: "Sailor Moon",
+      },
+      title: "Sailor Moon",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/3100-Thumb_PokemonGeneral_v3_400x320.jpg",
+        alt: "Pokemon",
+      },
+      title: "Pokemon",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/15-SeriesThumbnailsAnime_INY_400x320.jpg",
+        alt: "Inuyasha",
+      },
+      title: "Inuyasha",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/2465-Thumb_CSMAnime_400x320.jpg",
+        alt: "Chainsaw Man",
+      },
+      title: "Chainsaw Man",
+    },
+  ];
+  const gridData3 = [
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/438-ImprintThumbnails_ShojoBeat_400x320.jpg",
+        alt: "Shojo Beat",
+      },
+      title: "Shojo Beat",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/435-ImprintThumbnails_Ghibli_400x320.jpg",
+        alt: "Studio Ghibli Library",
+      },
+      title: "Pokemon",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/436-ImprintThumbnails_Haikasoru_400x320.jpg",
+        alt: "Haikasoru",
+      },
+      title: "Haikasoru",
+    },
+    {
+      image: {
+        src: "https://dw9to29mmj727.cloudfront.net/properties/2016/2117-VIZOriginals_logo_400x320.jpg",
+        alt: "VIZ Originals",
+      },
+      title: "VIZ Originals",
     },
   ];
 
@@ -72,6 +132,21 @@ function App() {
     { link: "#", text: "California Privacy Notice" },
     { link: "#", text: "Do Not Sell Or Share My Information" },
     { link: "#", text: "Accessibility" },
+  ];
+
+  const slideshow = [
+    {
+      src: "https://de7i3bh7bgh0d.cloudfront.net/2025/10/31/17/59/32/f85fbe87-c86b-463d-9519-016512b81d6e/NARSHP_cookbook_Blog_1200x630.jpg",
+      alt: "Ramen",
+    },
+    {
+      src: "https://de7i3bh7bgh0d.cloudfront.net/2025/10/31/17/59/31/2330a977-f043-47ff-8ab4-e1709d554226/HLP_boxSet_blogsplash_1200x630.jpg",
+      alt: "Jigokuraku",
+    },
+    {
+      src: "https://de7i3bh7bgh0d.cloudfront.net/2025/10/31/17/59/32/df3d487e-c546-4729-8389-2e089794971d/Kagurabachi%20V5_blogsplash_1200x630.jpg",
+      alt: "Kagurabachi",
+    },
   ];
 
   return (
@@ -115,7 +190,7 @@ function App() {
           </Nav>
         </Nav>
         <Image
-          width={800}
+          width={1000}
           alt="Ninja Ramen"
           image="https://de7i3bh7bgh0d.cloudfront.net/2025/10/31/17/59/32/f85fbe87-c86b-463d-9519-016512b81d6e/NARSHP_cookbook_Blog_1200x630.jpg"
         />
@@ -125,7 +200,7 @@ function App() {
         <div
           style={{
             display: "flex",
-            justifytext: "space-between",
+            justifyContent: "space-between",
             gap: "10px",
           }}
         >
@@ -186,6 +261,10 @@ function App() {
           </h1>
           <p>Tag posts #viz to share</p>
         </SocialBanner>
+        <h1>Check out our top series</h1>
+        <FeatureGrid gridData={gridData2} />
+        <h1>Brows our imprints</h1>
+        <FeatureGrid gridData={gridData3} />
       </main>
       <footer>
         <Newsletter

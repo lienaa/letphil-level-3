@@ -7,7 +7,7 @@ export const GridItem = ({ image, title, latest }) => {
         <img src={image.src} alt={image.alt} />
         <div>
             <h1>{title}</h1>
-            <p>Latest: {latest}</p>
+            <p>{latest}</p>
         </div>
       </div>
     </>

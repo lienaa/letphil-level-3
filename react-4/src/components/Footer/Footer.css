@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.footer a {
+footer a {
     color: gray;
 }
 
@@ -21,4 +21,8 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.footer-row a {
+    color: gray;
 }
