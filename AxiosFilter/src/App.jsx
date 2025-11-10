@@ -1,24 +1,47 @@
-import { useState } from 'react'
-import axios from "axios"
-import './App.css'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+
+import { PokeGrid } from "./components/PokeGrid/PokeGrid";
+import { ButtonGrid } from "./components/ButtonGrid/ButtonGrid";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pokemonInfo, setPokemonInfo] = useState([]);
+  const [pokemonTypes, setPokemonTypes] = useState([]);
+  const pokeUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
+
+  useEffect(() => {
+    async function getPokemon() {
+      try {
+        const { data } = await axios.get(pokeUrl);
+        const pokemonResults = data.results;
+        setPokemonInfo(
+          await Promise.all(
+            pokemonResults.map(async (pokemon) => {
+              const { data } = await axios.get(pokemon.url);
+              return {
+                name: data.species.name,
+                sprite: data.sprites.front_default,
+                types: data.types.map((t) => t.type.name),
+              };
+            })
+          )
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getPokemon();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-      </div>
-
-
-      <h1>Pokemon 151 Search</h1>
-
-
+      <h1>Pokemon Types</h1>
+      <ButtonGrid />
+      <PokeGrid pokemons={pokemonInfo} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
