@@ -8,7 +8,7 @@ import { ButtonGrid } from "./components/ButtonGrid/ButtonGrid";
 function App() {
   const [pokemonInfo, setPokemonInfo] = useState([]);
   const [pokemonTypes, setPokemonTypes] = useState([]);
-  const [filterType, setFilterType] = useState("all");
+  const [filterType, setFilterType] = useState("All");
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
 
   async function getPokemon() {
@@ -21,9 +21,9 @@ function App() {
         pokemonResults.map(async (pokemon) => {
           const { data } = await axios.get(pokemon.url);
           return {
-            name: data.species.name,
-            sprite: data.sprites.front_default,
-            types: data.types.map((t) => t.type.name),
+            name: capitalizeWords(data.species.name),
+            sprite: capitalizeWords(data.sprites.front_default),
+            types: data.types.map((t) => capitalizeWords(t.type.name)),
           };
         })
       );
@@ -42,6 +42,15 @@ function App() {
     }
   }
 
+  function capitalizeWords(string) {
+    return string
+      .split(" ")
+      .map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
+  }
+
   useEffect(() => {
     getPokemon();
   }, []);
@@ -52,7 +61,7 @@ function App() {
       <ButtonGrid types={pokemonTypes} onTypeSelect={setFilterType} />
       <PokeGrid
         pokemons={
-          filterType === "all"
+          filterType === "All"
             ? pokemonInfo
             : pokemonInfo.reduce(
                 (acc, pokemon) =>
