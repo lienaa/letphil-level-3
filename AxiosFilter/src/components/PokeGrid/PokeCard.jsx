@@ -3,7 +3,7 @@ export const PokeCard = ({ name, sprite, types }) => {
     <>
       <h1>{name}</h1>
       <img src={sprite} alt={name} />
-      <div className="types">
+      <div>
         {types.map((type) => (
           <p key={name + type}>{type}</p>
         ))}

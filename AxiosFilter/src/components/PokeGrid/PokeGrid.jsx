@@ -3,7 +3,7 @@ import { PokeCard } from "./PokeCard";
 export const PokeGrid = ({ pokemons }) => {
   return (
     <>
-      <ul>
+      <ul className="pokemon-grid">
         {pokemons.map((pokemon) => (
           <li key={pokemon.name}>
             <PokeCard
