@@ -11,10 +11,6 @@ function App() {
   const [filterType, setFilterType] = useState("all");
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
 
-  useEffect(() => {
-    getPokemon();
-  }, []);
-
   async function getPokemon() {
     try {
       const { data } = await axios.get(pokeUrl);
@@ -46,16 +42,22 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    getPokemon();
+  }, []);
+
   return (
     <>
-      <h1>Pokemon Types</h1>
+      <h1 className="text-6xl font-medium">Pokemon Types</h1>
       <ButtonGrid types={pokemonTypes} onTypeSelect={setFilterType} />
       <PokeGrid
         pokemons={
           filterType === "all"
             ? pokemonInfo
-            : pokemonInfo.filter((pokemon) =>
-                pokemon.types.includes(filterType)
+            : pokemonInfo.reduce(
+                (acc, pokemon) =>
+                  pokemon.types.includes(filterType) ? [...acc, pokemon] : acc,
+                []
               )
         }
       />
