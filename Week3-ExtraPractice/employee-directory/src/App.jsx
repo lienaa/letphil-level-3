@@ -1,6 +1,7 @@
 
 import './App.css'
 import { EmployeeGrid } from './Components/EmployeeGrid'
+import { Search } from './Components/Search';
 
 function App() {
 const employees = [
@@ -51,6 +52,7 @@ const employees = [
   return (
     <>
       <h1>Employee Directory</h1>
+      <Search />
       <EmployeeGrid employees={employees}/>
     </>
   )
