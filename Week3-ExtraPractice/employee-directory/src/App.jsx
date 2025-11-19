@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import { EmployeeGrid } from "./Components/EmployeeGrid";
 import { Search } from "./Components/Search";
+import { ShowAll } from "./Components/ShowAll";
 
 function App() {
   const employees = [
@@ -62,6 +63,7 @@ function App() {
       <div className="flex flex-col justify-start">
         <h1>Employee Directory</h1>
         <Search employees={employees} onFilter={setFilterEmployees} />
+        <ShowAll employees={filteredEmployees} />
         <EmployeeGrid employees={filteredEmployees} />
       </div>
     </>
