@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-export const Search = () => {
+export const Search = ({ employees, onFilter }) => {
   const [search, setSearch] = useState("");
   return (
     <div className="justify-center my-4 flex gap-2">
@@ -10,7 +10,14 @@ export const Search = () => {
         type="text"
         placeholder="Search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => {
+          const typedInput = e.target.value;
+          setSearch(typedInput);
+          const results = employees.filter((employee) =>
+            employee.name.toLowerCase().includes(typedInput.toLowerCase())
+          );
+          onFilter(results);
+        }}
       ></input>
     </div>
   );
