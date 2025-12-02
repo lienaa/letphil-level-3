@@ -7,6 +7,33 @@ import { ButtonGrid } from "./components/ButtonGrid/ButtonGrid";
 import { useGetPokemon } from "./hooks/useGetData";
 
 function App() {
+  const getData = async () => {
+    const response = await axios.get("http://localhost:3000/");
+    const data = response.data;
+    console.log(data);
+  };
+
+  const options = {
+    headers: {
+      ContentType: "application/json",
+    },
+    body: {
+      id: 4,
+      name: "Tom",
+      age: 15,
+    },
+  };
+
+  const postData = async () => {
+    const response = await axios.post(
+      "http://localhost:3000/newUser",
+      options.body
+    );
+    console.log(response.data);
+    setUsers(response.data);
+  };
+
+  const [users, setUsers] = useState([]);
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [filterType, setFilterType] = useState("All");
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
@@ -26,6 +53,12 @@ function App() {
 
   return (
     <>
+      <button onClick={postData}>Post Data</button>
+      {users.map((user) => {
+        return (
+            <p>{user.name} {user.age}</p>
+        );
+      })}
       <h1 className="text-6xl font-medium">Pokemon Types</h1>
       <ButtonGrid types={pokemonTypes} onTypeSelect={setFilterType} />
       <PokeGrid
