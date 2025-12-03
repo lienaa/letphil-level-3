@@ -56,7 +56,9 @@ function App() {
       <button onClick={postData}>Post Data</button>
       {users.map((user) => {
         return (
-            <p>{user.name} {user.age}</p>
+          <p>
+            {user.name} {user.age}
+          </p>
         );
       })}
       <h1 className="text-6xl font-medium">Pokemon Types</h1>
