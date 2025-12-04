@@ -1,10 +1,18 @@
 POST http://localhost:3000/newUser HTTP/1.1
-# Header
 Content-Type: application/json
 
-# Body
 {
     "id": 4,
     "name": "Tom",
+    "occupation": "doctor",
     "age": 20
+}
+
+###
+PATCH http://localhost:3000/update/3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Lennie",
+    "age": 21
 }

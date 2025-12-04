@@ -125,6 +125,9 @@ State management
   app.get();
   app.post();
   ```
+  
+  From req we can get params, and query  
+  Example URL: localhost:3000?occupation=nurse&overTheAge=60
 
 - Define Middleware - things that run in the middle of a request
 
