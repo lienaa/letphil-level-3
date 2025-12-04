@@ -24,6 +24,12 @@ const studentList = [
     age: 11,
     grade: "88",
   },
+  {
+    id: 4,
+    name: "Dennis",
+    age: 14,
+    grade: "83",
+  },
 ];
 
 let nextStudentId = studentList.length + 1;
@@ -45,7 +51,7 @@ app.get("/student/:id", (req, res) => {
 
 // Get all students
 app.get("/students", (req, res) => {
-  console.log("Sending all students: ", studentList);
+  console.log("Sending all students");
   res.status(200).send(studentList);
 });
 
@@ -70,6 +76,7 @@ app.delete("/deleteStudent/:id", (req, res) => {
   const { id } = req.params;
   const index = studentList.findIndex((student) => student.id == id);
   if (index === -1) {
+    console.log("Student not found at index ", index);
     res.status(404).send("Student ID not found");
   }
   const [student] = studentList.splice(index, 1);
@@ -78,18 +85,34 @@ app.delete("/deleteStudent/:id", (req, res) => {
 });
 
 // UPDATE student information
-app.patch("/updateStudent/:id", (req, res) => {
-    const { id } = req.params;
-    const index = studentList.findIndex((student) => student.id == id);
-    if (index === -1) {
-        res.status(404).send("Student not found")
-    }
-    const student = studentList[index]
-    const { name, age, grade } = req.body
-    if (!name) student.name = name
-    if (!age) student.age = age
-    if (!grade) student.grade = grade
-    res.status(200).send("Updated student ID: ", id)
+app.patch("/editStudent/:id", (req, res) => {
+  const { id } = req.params;
+  const index = studentList.findIndex((student) => student.id == id);
+  if (index === -1) {
+    console.log("Student not found at index ", index);
+    res.status(404).send("Student not found");
+    return;
+  }
+  const student = studentList[index];
+  const { name, age, grade } = req.body;
+  if (name !== undefined && name != "") {
+    student.name = name;
+  }
+  if (age !== undefined && age != "") {
+    student.age = age;
+  }
+  if (grade !== undefined && grade != "") {
+    student.grade = grade;
+  }
+  console.log(
+    "updated student at index: ",
+    index,
+    " with: ",
+    student.name,
+    student.age,
+    student.grade
+  );
+  res.status(200).send("Updated student ID: ", id);
 });
 
 app.listen(3000, () => console.log("Server Started at Port 3000"));

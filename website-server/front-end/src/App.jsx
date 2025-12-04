@@ -14,6 +14,12 @@ function App() {
     age: "",
     grade: "",
   });
+  const [formEditInput, setFormEditInput] = useState({
+    id: "",
+    name: "",
+    age: "",
+    grade: "",
+  });
 
   // Search with GET by ID
   const getStudentById = async (e) => {
@@ -47,7 +53,7 @@ function App() {
   };
 
   // Add a student with POST
-  const addStudent = async (e) => {
+  const addStudent = async () => {
     const url = "http://localhost:3000/addStudent";
     console.log("Adding: ", formInput);
     try {
@@ -64,6 +70,13 @@ function App() {
       [e.target.name]: e.target.value,
     });
   };
+  // Form on change helper function
+  const formEdit = (e) => {
+    setFormEditInput({
+      ...formEditInput,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // Delete student
   const deleteStudent = async (id) => {
@@ -76,12 +89,22 @@ function App() {
     }
   };
 
+  // Edit Student with Patch
+  const editStudent = async (id) => {
+    const url = `http://localhost:3000/editStudent/${id}`;
+    try {
+      const { data } = await axios.patch(url, formEditInput);
+    } catch (e) {
+      console.log("Unable to edit student id: ", id);
+    }
+  };
+
   // studentData brings the form from component to App
   const studentData = (e, id, age, grade) => {
     e.preventDefault();
-    console.log(id, age, grade)
-    return ({ id, age, grade })
-  }
+    console.log(id, age, grade);
+    return { id, age, grade };
+  };
 
   useEffect(() => {
     displayAllStudents();
@@ -103,13 +126,17 @@ function App() {
         />
         <button type="submit">Search ID</button>
       </form>
-      <Student student={student} deleteStudent={deleteStudent} studentData={studentData} />
+      <Student
+        student={student}
+        deleteStudent={deleteStudent}
+        studentData={studentData}
+      />
 
       <h2 className="mt-4 font-bold">Add Student</h2>
       <form onSubmit={addStudent} className="flex flex-col text-left">
-        <label htmlFor="idInput">Student Name:</label>
+        <label htmlFor="nameInput">Student Name:</label>
         <input
-          id="idInput"
+          id="nameInput"
           className="border border-white rounded"
           name="name"
           value={formInput.name}
@@ -137,8 +164,58 @@ function App() {
         <button type="submit">Add</button>
       </form>
 
+      <h2 className="mt-4 font-bold">Edit Student</h2>
+      <form
+        onSubmit={(e) => {
+          editStudent(formEditInput.id);
+        }}
+        className="flex flex-col text-left"
+      >
+        <label htmlFor="idEdit">Student ID:</label>
+        <input
+          id="idEdit"
+          className="border border-white rounded"
+          name="id"
+          value={formEditInput.id}
+          onChange={formEdit}
+          type="text"
+        ></input>
+        <label htmlFor="nameEdit">Student Name:</label>
+        <input
+          id="nameEdit"
+          className="border border-white rounded"
+          name="name"
+          value={formEditInput.name}
+          onChange={formEdit}
+          type="text"
+        ></input>
+        <label htmlFor="ageEdit">Student Age:</label>
+        <input
+          id="ageEdit"
+          className="border border-white rounded"
+          name="age"
+          value={formEditInput.age}
+          onChange={formEdit}
+          type="number"
+        ></input>
+        <label htmlFor="gradeEdit">Student Grade %:</label>
+        <input
+          id="gradeEdit"
+          className="border border-white rounded"
+          name="grade"
+          value={formEditInput.grade}
+          onChange={formEdit}
+          type="number"
+        ></input>
+        <button type="submit">Edit</button>
+      </form>
+
       <h2 className="mt-4 font-bold">All Students</h2>
-      <StudentList students={students} deleteStudent={deleteStudent} studentData={studentData}/>
+      <StudentList
+        students={students}
+        deleteStudent={deleteStudent}
+        studentData={studentData}
+      />
     </>
   );
 }
