@@ -5,28 +5,69 @@
 Used to render only the parts of the page that needs to be changed, instead of rerendering the entire page.
 
 1. Set up environment
+
    - `npm create vite@latest .`
    - Select framework: React
    - Install [Axios](https://axios-http.com/docs/intro)  
      `npm i axios`
    - Install [Tailwind](https://tailwindcss.com/docs/installation/using-vite)  
      `npm i tailwindcss @tailwindcss/vite`
+
      - Configure Vite plugin vite.config.js
 
      ```js
-       import tailwindcss from '@tailwindcss/vite'
-       
-       export default defineConfig({
-        plugins: [
-            tailwindcss(),
-        ],
-       })
+     import tailwindcss from "@tailwindcss/vite";
+
+     export default defineConfig({
+       plugins: [tailwindcss()],
+     });
      ```
 
      - Import Tailwind CSS
-      `@import "tailwindcss";`
+       `@import "tailwindcss";`
 
 - Destructuring
+- Components
+
+  - Input states without forms
+
+    Create state variable and HTML input on change trigger
+
+    ```jsx
+    const [state, setState] = useState("");
+
+    <input>
+        type="text"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+    />
+    ```
+
+  - Form input state
+    Create state variable and HTML form
+
+    ```jsx
+    const [state, setState] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!studentId) return;
+
+        const url = `http://exampleapi.com/${state}`
+        const { data } = await axios.get(url);
+    }
+
+    <form onSubmit={handleSubmit}>
+        <input
+        type="text"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+        />
+        <button type="submit">Search<button/>
+    </form>
+    
+    ```
 
 ## React Router
 
