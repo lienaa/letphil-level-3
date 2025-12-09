@@ -1,9 +1,12 @@
 import express from "express";
 import cors from "cors";
+import AnimalRoute from "./Routes/animal.routes.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use("/animals", AnimalRoute);
 
 app.get("/", (req, res) => {
   res.send({ message: "This is the backend" });
@@ -51,7 +54,9 @@ app.patch("/update/:userID", (req, res) => {
   const index = userDB.findIndex((user) => user.id == userID);
   userDB.splice(index, 1, user);
   console.log(userDB);
-  res.status(200).send(`Updated User: ${userDB[index].id}, ${userDB[index].name}`);
+  res
+    .status(200)
+    .send(`Updated User: ${userDB[index].id}, ${userDB[index].name}`);
 });
 
 app.listen(3000, () => console.log("Server is running on port: 3000"));
