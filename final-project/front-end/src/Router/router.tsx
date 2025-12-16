@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import { Layout } from "../Components/Layout.tsx";
-import { DashBoard } from "../Components/MainPages/DashBoard.tsx";
+import { DashBoard } from "../Components/MainPages/DashBoard/DashBoard.tsx";
 import { Library } from "../Components/MainPages/Library.tsx";
 import { BackLog } from "../Components/MainPages/BackLog.tsx";
 import { PlayNext } from "../Components/MainPages/PlayNext.tsx";
